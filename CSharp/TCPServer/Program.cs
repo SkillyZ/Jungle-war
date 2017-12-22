@@ -11,6 +11,7 @@ namespace TCPServer
     class Program
     {
         private static byte[] dataBuffer = new byte[1024];
+        private static Message msg = new Message();
         static void Main(string[] args)
         {
             StartServerAsync();
@@ -35,10 +36,10 @@ namespace TCPServer
         {
             Socket server = ar.AsyncState as Socket;
             Socket client = server.EndAccept(ar);
-            string msg = "Hello client ! 你好 ....";
-            byte[] data = System.Text.Encoding.UTF8.GetBytes(msg);
+            string msgStr = "Hello client ! 你好 ....";
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(msgStr);
             client.Send(data);
-            client.BeginReceive(dataBuffer, 0, 1024, SocketFlags.None, ReceiveCallBack, client);
+            client.BeginReceive(msg.Data, msg.StartIndex, msg.RemainSize, SocketFlags.None, ReceiveCallBack, client);
             server.BeginAccept(AcceptCallBack, server);
         }
 
@@ -49,14 +50,17 @@ namespace TCPServer
             {
                 client = ar.AsyncState as Socket;
                 int count = client.EndReceive(ar);
-                string msg = Encoding.UTF8.GetString(dataBuffer, 0, count);
                 if (count == 0)
                 {
                     client.Close();
                     return;
                 }
-                Console.WriteLine("从客户端接收数据 :" + "--"  + msg);
-                client.BeginReceive(dataBuffer, 0, 1024, SocketFlags.None, ReceiveCallBack, client);
+                msg.AddCount(count);
+                //string msgStr = Encoding.UTF8.GetString(dataBuffer, 0, count);
+                //Console.WriteLine("从客户端接收数据 :" + "--"  + msgStr);
+                //client.BeginReceive(dataBuffer, 0, 1024, SocketFlags.None, ReceiveCallBack, client);
+                msg.ReadMessage();
+                client.BeginReceive(msg.Data, msg.StartIndex, msg.RemainSize, SocketFlags.None, ReceiveCallBack, client);
             }
             catch (Exception e)
             {
