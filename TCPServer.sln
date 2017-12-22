@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPServer", "TCPServer\TCPServer.csproj", "{97E7547E-F5B5-495E-B429-BAEFD5E1059D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPClient", "TCPClient\TCPClient.csproj", "{9BB94D67-9522-47B3-9F2D-3B40E4C90BD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringToByte", "StringToByte\StringToByte.csproj", "{B22C108C-1986-4687-AF5E-0858337A65C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97E7547E-F5B5-495E-B429-BAEFD5E1059D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E7547E-F5B5-495E-B429-BAEFD5E1059D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E7547E-F5B5-495E-B429-BAEFD5E1059D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E7547E-F5B5-495E-B429-BAEFD5E1059D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB94D67-9522-47B3-9F2D-3B40E4C90BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB94D67-9522-47B3-9F2D-3B40E4C90BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB94D67-9522-47B3-9F2D-3B40E4C90BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB94D67-9522-47B3-9F2D-3B40E4C90BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B22C108C-1986-4687-AF5E-0858337A65C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B22C108C-1986-4687-AF5E-0858337A65C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B22C108C-1986-4687-AF5E-0858337A65C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B22C108C-1986-4687-AF5E-0858337A65C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05248910-1791-4FFA-8900-8BDEE6D0F0F4}
+	EndGlobalSection
+EndGlobal
