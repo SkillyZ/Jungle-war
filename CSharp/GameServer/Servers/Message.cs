@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace GameServer.Servers
 {
@@ -34,7 +35,7 @@ namespace GameServer.Servers
         /// <summary>
         /// 解析数据 and 读取数据
         /// </summary>
-        public void ReadMessage(int newDataAmount)
+        public void ReadMessage(int newDataAmount, Action<RequestCode, ActionCode, string> processDataCallBack)
         {
             startIndex += newDataAmount;
             while (true)
@@ -43,8 +44,13 @@ namespace GameServer.Servers
                 int count = BitConverter.ToInt32(data, 0); // 传过来的占位符数据长度, 读取长度
                 if (startIndex - 4 > count) //实际的数据长度
                 {
-                    string s = Encoding.UTF8.GetString(data, 4, count); //读取内容
-                    Console.WriteLine("解析出来的数据:" + s);
+                    //string s = Encoding.UTF8.GetString(data, 4, count); //读取内容
+                    //Console.WriteLine("解析出来的数据:" + s);
+                    RequestCode requestCode = (RequestCode)BitConverter.ToInt32(data, 4);
+                    ActionCode actionCode = (ActionCode)BitConverter.ToInt32(data, 8);
+                    string s = Encoding.UTF8.GetString(data, 12, count - 8);
+
+                    processDataCallBack(requestCode, actionCode, s);
                     Array.Copy(data, count + 4, data, 0, startIndex - 4 - count); //移动数组
                     startIndex -= (count + 4);
                 }
@@ -54,5 +60,15 @@ namespace GameServer.Servers
                 }
             }
         }
+
+        public static byte[] PackData(RequestCode requestCode, string data)
+        {
+            byte[] requestCodeBytes = BitConverter.GetBytes((int)requestCode);
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            int dataAmount = requestCodeBytes.Length + dataBytes.Length;
+            byte[] dataAmountBytes = BitConverter.GetBytes(dataAmount);
+            return dataAmountBytes.Concat(requestCodeBytes).Concat(dataBytes) as byte[];
+        }
+
     }
 }
