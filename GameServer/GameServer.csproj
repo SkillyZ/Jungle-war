@@ -62,11 +62,5 @@
     <Folder Include="DAO\" />
     <Folder Include="Model\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{ca8c32bc-8c2b-4c17-b142-6561ab56e898}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
