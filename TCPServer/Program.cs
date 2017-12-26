@@ -48,6 +48,7 @@ namespace TCPServer
             Socket client = null;
             try
             {
+                Console.WriteLine("ReceiveCallBack");
                 client = ar.AsyncState as Socket;
                 int count = client.EndReceive(ar);
                 if (count == 0)
@@ -69,9 +70,6 @@ namespace TCPServer
                 {
                     client.Close();
                 }
-            }
-            finally
-            {
             }
         }
 
