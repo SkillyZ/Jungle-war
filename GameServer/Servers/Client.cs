@@ -65,7 +65,6 @@ namespace GameServer.Servers
         public void Send(ActionCode actionCode, string data)
         {
             byte[] bytes = Message.PackData(actionCode, data);
-            Console.WriteLine("SendResponse");
             client.Send(bytes);
         }
 
