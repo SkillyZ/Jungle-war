@@ -41,6 +41,10 @@ namespace GameServer.Servers
         {
             try
             {
+                if (client == null || client.Connected == false)
+                {
+                    return;
+                }
                 int count = client.EndReceive(ar);
                 if (count == 0)
                 {
