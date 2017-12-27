@@ -9,7 +9,7 @@ namespace GameServer.Tool
 {
     class ConnHelper
     {
-        public const string CONNECTIONSTRING = "datasource=127.0.0.1;port=3306;database=game01;user=root;";
+        public const string CONNECTIONSTRING = "datasource=127.0.0.1;port=3306;database=test;user=root;";
 
         public static MySqlConnection Connect()
         {

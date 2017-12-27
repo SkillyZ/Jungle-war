@@ -32,5 +32,20 @@ namespace GameServer.Controller
             }
         }
 
+        public string Register(string data, Client client, Server server)
+        {
+            string[] strs = data.Split(',');
+            bool flag = userDAO.GetUserByUsername(client.MysqlConn, strs[0]);
+            if (flag)
+            {
+                return ((int)ReturnCode.Fail).ToString();
+            }
+            else
+            {
+                userDAO.AddUser(client.MysqlConn, strs[0], strs[1]);
+                return ((int)ReturnCode.Successs).ToString();
+            }
+        }
+
     }
 }

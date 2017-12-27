@@ -42,7 +42,7 @@ namespace GameServer.Servers
             {
                 if (startIndex <= 4) return;
                 int count = BitConverter.ToInt32(data, 0); // 传过来的占位符数据长度, 读取长度
-                if (startIndex - 4 > count) //实际的数据长度
+                if (startIndex - 4 >= count) //实际的数据长度
                 {
                     //string s = Encoding.UTF8.GetString(data, 4, count); //读取内容
                     //Console.WriteLine("解析出来的数据:" + s);
