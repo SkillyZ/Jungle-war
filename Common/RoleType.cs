@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Common
 {
-    public enum RequestCode
+    public enum RoleType
     {
-        None,
-        User,
-        Room,
-        Game,
+        Blue,
+        Red
     }
 }

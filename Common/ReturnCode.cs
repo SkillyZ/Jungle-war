@@ -6,7 +6,8 @@ namespace Common
 {
     public enum ReturnCode
     {
-        Successs,
+        Success,
         Fail,
+        NotFound
     }
 }

@@ -28,7 +28,7 @@ namespace GameServer.Controller
                 return ((int)ReturnCode.Fail).ToString();
             } else
             {
-                return ((int)ReturnCode.Successs).ToString();
+                return ((int)ReturnCode.Success).ToString();
             }
         }
 
@@ -43,7 +43,7 @@ namespace GameServer.Controller
             else
             {
                 userDAO.AddUser(client.MysqlConn, strs[0], strs[1]);
-                return ((int)ReturnCode.Successs).ToString();
+                return ((int)ReturnCode.Success).ToString();
             }
         }
 
